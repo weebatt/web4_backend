@@ -4,6 +4,6 @@ WORKDIR /usr/local/tomcat/webapps/
 
 COPY build/libs/*.war ROOT.war
 
-EXPOSE 25100
+EXPOSE 8080
 
 CMD ["catalina.sh", "run"]
