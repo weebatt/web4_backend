@@ -25,16 +25,16 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf().disable()
+                .cors() // Включить CORS в Spring Security
+                .and()
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/auth/register", "/api/auth/login",
-                                "/api/check-point", "/api/clear-points",
-                                "/api/check-point-button").permitAll()
+                        .requestMatchers("/api/auth/register", "/api/auth/login", "/api/**").permitAll()
                         .anyRequest().authenticated())
-                .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
-                .cors();
+                .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
     }
+
 
 
 
