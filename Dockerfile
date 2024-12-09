@@ -2,7 +2,7 @@ FROM tomcat:9-jdk11
 
 WORKDIR /usr/local/tomcat/webapps/
 
-COPY build/libs/*.war app.war
+COPY build/libs/*.war ROOT.war
 
 EXPOSE 8080
 
